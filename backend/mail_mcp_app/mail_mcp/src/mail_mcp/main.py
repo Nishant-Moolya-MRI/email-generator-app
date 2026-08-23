@@ -3,6 +3,7 @@ from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from mail_mcp.tools.mail import send_email, generate_mail
 from mail_mcp.utils.logger import logger
+import os
 
 mcp = FastMCP(
     name="Mail MCP Server",
@@ -19,6 +20,8 @@ def run_mcp_server():
     try:
         mcp.run(
             transport="streamable-http",
+            host="0.0.0.0",
+            port=int(os.getenv("PORT", "8000")),
             middleware=[
                 Middleware(
                     CORSMiddleware,
