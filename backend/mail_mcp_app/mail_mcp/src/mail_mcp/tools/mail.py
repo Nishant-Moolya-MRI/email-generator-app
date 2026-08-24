@@ -3,7 +3,7 @@ from mail_mcp.models.mail import SendMailResponse, SendMailRequest, GenerateMail
 from mail_mcp.agents.mail_generator_agent import get_mail_generator_agent
 from langchain_core.messages import HumanMessage
 
-DEVELOPMENT_MODE = True
+DEVELOPMENT_MODE = False
 
 async def generate_mail(params: GenerateMailRequest) -> GenerateMailResponse:
     """
