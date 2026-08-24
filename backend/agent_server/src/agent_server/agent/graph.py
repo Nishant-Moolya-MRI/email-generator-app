@@ -21,7 +21,7 @@ async def build_graph() -> CompiledStateGraph:
     workflow =  graph.compile()
     workflow_img = workflow.get_graph().draw_mermaid_png()
     
-    with open("graph.png", "wb") as f:
-        f.write(workflow_img)
+    # with open("graph.png", "wb") as f:
+    #     f.write(workflow_img)
 
     return workflow
