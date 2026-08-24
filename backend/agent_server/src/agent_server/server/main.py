@@ -40,3 +40,7 @@ def run_server():
     global workflow
     workflow = asyncio.run(build_graph())
     app.run(port=8088)
+
+# if __name__ == "__main__":
+#     print("Hello from agent-server!")
+#     run_server()

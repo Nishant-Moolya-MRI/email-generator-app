@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: nish-mail-generator
+services:
+    nish-mail-agent:
+        project: .
+        host: azure.ai.agent
+        language: docker
+        docker:
+            remoteBuild: false
+        uses:
+            - nish-mail-generator
+        container:
+            resources:
+                cpu: "0.5"
+                memory: 1Gi
+        kind: hosted
+        name: nish-mail-agent
+        protocols:
+            - protocol: invocations
+              version: 2.0.0
+        startupCommand: uv run agent-server
+    nish-mail-generator:
+        host: azure.ai.project
+        endpoint: https://nish-mail-generator-resource.services.ai.azure.com/api/projects/nish-mail-generator
+infra:
+    provider: microsoft.foundry
