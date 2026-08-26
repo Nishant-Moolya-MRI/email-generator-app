@@ -5,12 +5,13 @@
 name: Build and deploy Mail MCP server - nish-mail-mcp-server
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - "backend/mail_mcp_app/mail_mcp/**"
-      - ".github/workflows/master_nish-mail-mcp-server.yml"
+  # Temporarily disabling deployment workflow 
+  # push:
+  #   branches:
+  #     - master
+  #   paths:
+  #     - "backend/mail_mcp_app/mail_mcp/**"
+  #     - ".github/workflows/master_nish-mail-mcp-server.yml"
   workflow_dispatch:
 
 jobs:

@@ -2,6 +2,7 @@ from fastmcp import FastMCP
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from mail_mcp.tools.mail import send_email, generate_mail
+from mail_mcp.resources.mail import get_generate_mail_ui
 from mail_mcp.utils.logger import logger
 import os
 
@@ -13,8 +14,25 @@ mcp = FastMCP(
     """
 )
 
-mcp.tool()(generate_mail)
+# resource URIs
+resource_uris = {
+    "generate_mail_ui" : "ui://draft-mail"
+}
+
+# tools
+mcp.tool(
+    meta={
+        "ui": { "resourceUri": resource_uris.get("generate_mail_ui") }
+    }
+)(generate_mail)
 # mcp.tool()(send_email)
+
+# resources
+mcp.resource(
+    uri=resource_uris.get("generate_mail_ui"),
+    description="UI for displaying generated draft mail",
+    mime_type="text/html;profile=mcp-app",
+)(get_generate_mail_ui)
 
 def run_mcp_server():
     try:

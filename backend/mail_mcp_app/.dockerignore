@@ -1,0 +1,15 @@
+**/.git
+**/.gitignore
+
+**/.env
+**/.env.*
+
+**/node_modules
+**/__pycache__
+**/.venv
+
+**/dist
+**/build
+
+.DS_Store
+*.log
