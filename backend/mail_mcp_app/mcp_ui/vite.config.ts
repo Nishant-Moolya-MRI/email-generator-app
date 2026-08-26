@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { viteSingleFile } from 'vite-plugin-singlefile'
+import tailwindcss from '@tailwindcss/vite'
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -11,7 +12,7 @@ const ENTRY_POINTS = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), viteSingleFile()],
+  plugins: [react(), viteSingleFile(), tailwindcss()],
   build: {
     sourcemap: isDevelopment ? "inline" : undefined,
     cssMinify: !isDevelopment,

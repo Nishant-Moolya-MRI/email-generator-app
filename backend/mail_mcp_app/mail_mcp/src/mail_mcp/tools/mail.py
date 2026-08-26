@@ -3,7 +3,7 @@ from mail_mcp.models.mail import SendMailResponse, SendMailRequest, GenerateMail
 from mail_mcp.agents.mail_generator_agent import get_mail_generator_agent
 from langchain_core.messages import HumanMessage
 
-DEVELOPMENT_MODE = False
+DEVELOPMENT_MODE = True
 
 async def generate_mail(params: GenerateMailRequest) -> GenerateMailResponse:
     """
@@ -26,7 +26,7 @@ async def generate_mail(params: GenerateMailRequest) -> GenerateMailResponse:
                         ]
                     })
         else:
-            result["structured_response"] = GenerateMailResponse(subject="Sales Update", body_content="Hello this is my mail")
+            result["structured_response"] = GenerateMailResponse(subject='Update on Quarterly Sales Performance', body_content='Dear John Lee,\n\nI wanted to provide you with a brief update on our quarterly sales performance. We saw a 10% decrease in sales this quarter, and I wanted to bring this to your attention.\n\nI am reviewing the contributing factors and will work on identifying possible actions to help improve results in the next quarter. Please let me know if you would like to discuss this further.\n\nBest regards,\nNishant')
         
         logger.info("Email generated successfully", result["structured_response"])
         return result["structured_response"]
